@@ -9,7 +9,7 @@
 		<div v-for="item in $store.state.list">{{item.title}}</div>
 	</div>
 	<div>
-		<page></page>
+		
 	</div>
 	</div>
 </template>
