@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import App from './App.vue';
 import Foo from './Foo.vue';
 import First from './First.vue';
 import Second from './Second.vue';

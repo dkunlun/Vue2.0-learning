@@ -9,14 +9,16 @@
 		<div v-for="item in $store.state.list">{{item.title}}</div>
 	</div>
 	<div>
-		
+		<page></page>
 	</div>
 	</div>
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
-import page from './pager/page.vue';
+import page from './component/pager/page.vue';
+Vue.component(page.name, page);
 export default {
 	computed: mapGetters([
 		'evenOrOdd'
