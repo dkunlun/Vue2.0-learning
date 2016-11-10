@@ -4,7 +4,9 @@ import First from './First.vue';
 import Second from './Second.vue';
 import VueRouter from 'vue-router';
 import Counter from './counter.vue';
-import store from './store.js';
+// import store from './store.js';
+import store from './vue-note/vuex/store'
+import App from './vue-note/components/app.vue'
 import VueResource from 'vue-resource';
 import list from './component/list/List.vue';
 
@@ -16,7 +18,8 @@ const router = new VueRouter({
 		{ path: '/second', component: Second },
 		{ path: '/first', component: First },
 		{ path: '/count', component: Counter },
-		{ path: '/list', component: list }
+		{ path: '/list', component: list },
+		{ path: '/note', component: App }
 	]
 });
 new Vue({

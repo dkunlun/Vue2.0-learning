@@ -5,11 +5,11 @@
 		<li><router-link to="/second">点我跳转到第二页</router-link></li>
 		<li><router-link to="/count">点我跳转到count</router-link></li>
 		<li><router-link to="/list">点我跳转到list</router-link></li>
+		<li><router-link to="/note">点我跳转到note</router-link></li>
 		<router-view class="view"></router-view>
 	</div>
 </template>
 <script>
-// import Second from './Second.vue';
 export default {
 	name: 'app',
 	data() {
@@ -17,6 +17,5 @@ export default {
 			msg: 'Welcome to Your Vue.js App'
 		}
 	}
-	// components: { Second }
 }
 </script>
