@@ -22,13 +22,5 @@ export default {
 			'editNote'
 		])
 	}
-	// vuex: {
-	// 	getters: {
-	// 		activeNoteText: state => state.activeNote.text
-	// 	},
-	// 	actions: {
-	// 		editNote
-	// 	}
-	// }
 }
 </script>
