@@ -22,7 +22,7 @@
 		<div class="container">
 			<div class="list-group">
 				<a v-for="note in filteredNotes"
-					class="list-group-item" href="#"
+					class="list-group-item" href="javascript: void(0);"
 					:class="{active: activeNote === note}"
 					@click="updateActiveNote(note)">
 					<h4 class="list-group-item-heading">
