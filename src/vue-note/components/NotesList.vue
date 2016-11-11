@@ -52,7 +52,7 @@ export default {
 			if(this.show === 'all') {
 				return this.notes
 			} else if (this.show === 'favorites') {
-				return this.notes.filter(note => note.favorites)
+				return this.notes.filter(note => note.favorite)
 			}
 		}
 	},
