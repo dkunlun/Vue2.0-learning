@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as actions from './actions.js'
 
 Vue.use(Vuex)
 
@@ -7,9 +8,13 @@ const state = {
 	notes: [],
 	activeNote: {}
 }
-
+const getters = {
+	activeNote: state => state.activeNote,
+	notes: state => state.notes,
+	activeNoteText: state => state.activeNote.text
+}
 const mutations = {
-	ADD_NOTE(state) {
+	addNote(state) {
 		const newNote = {
 			text: 'New note',
 			fovorite: false
@@ -17,22 +22,24 @@ const mutations = {
 		state.notes.push(newNote)
 		state.activeNote = newNote
 	},
-	EDIT_NOTE(state, text) {
+	editNote(state, text) {
 		state.activeNote.text = text
 	},
-	DELETE_NOTE(state) {
+	deleteNote(state) {
 		state.notes.$remove(state.activeNote)
 		state.activeNote = state.notes[0]
 	},
-	TOGGLE_NOTE(state) {
-		state.activeNote.favorite = !state.activeNote.favorite;
+	toggleFavorite(state) {
+		state.activeNote.favorite = !state.activeNote.favorite
 	},
-	SET_ACTIVE_NOTE(state, note) {
+	setActiveNote(state, note) {
 		state.activeNote = note
 	}
 }
 
 export default new Vuex.Store({
 	state,
-	mutations
+	actions,
+	mutations,
+	getters
 })

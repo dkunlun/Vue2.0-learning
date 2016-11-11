@@ -9,18 +9,26 @@
 </template>
 
 <script>
-import { addNote, deleteNote, toggleFavorite } from '../vuex/actions'
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
-	vuex: {
-		getters: {
-			avtiveNote: state => state.activeNote
-		},
-		actions: {
-			addNote,
-			deleteNote,
-			toggleFavorite
-		}
-	}
+	// vuex: {
+	// 	getters: {
+	// 		avtiveNote: state => state.activeNote
+	// 	},
+	// 	actions: {
+	// 		addNote,
+	// 		deleteNote,
+	// 		toggleFavorite
+	// 	}
+	// }
+	computed: mapGetters([
+		'activeNote'
+	]),
+	methods: mapActions([
+		'addNote',
+		'deleteNote',
+		'toggleFavorite'
+	])
 }
 </script>

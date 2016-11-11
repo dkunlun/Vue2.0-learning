@@ -28,5 +28,6 @@
   "trailing": true,
   "undef": true,
   "unused": true,
-  "white": true
+  "white": true,
+  "lastsemic": false
 }
