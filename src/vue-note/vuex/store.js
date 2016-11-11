@@ -17,7 +17,7 @@ const mutations = {
 	addNote(state) {
 		const newNote = {
 			text: 'New note',
-			fovorite: false
+			favorite: false
 		}
 		state.notes.push(newNote)
 		state.activeNote = newNote
@@ -26,7 +26,8 @@ const mutations = {
 		state.activeNote.text = text
 	},
 	deleteNote(state) {
-		state.notes.$remove(state.activeNote)
+		// state.notes.$remove(state.activeNote)
+		state.notes.splice(state.notes.indexOf(state.activeNote), 1)
 		state.activeNote = state.notes[0]
 	},
 	toggleFavorite(state) {

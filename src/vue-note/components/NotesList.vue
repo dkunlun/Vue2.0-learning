@@ -61,23 +61,5 @@ export default {
 			'updateActiveNote'
 		])
 	}
-	// vuex: {
-	// 	getters: {
-	// 		notes: state => state.notes,
-	// 		activeNote: state => state.activeNote
-	// 	},
-	// 	actions: {
-	// 		updateActiveNote
-	// 	}
-	// },
-	// computed: {
-	// 	filteredNotes () {
-	// 		if(this.show === 'all') {
-	// 			return this.notes
-	// 		} else if (this.show === 'favorites') {
-	// 			return this.notes.filter(note => note.favorites)
-	// 		}
-	// 	}
-	// }
 }
 </script>
