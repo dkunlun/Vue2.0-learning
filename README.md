@@ -6,3 +6,7 @@ vue2.0 learning
 	vue-router
 	vue-resource
 	vue-cli
+
+Running the examples:
+	$ npm install or yarn
+	$ npm run dev # serve examples at localhost:3000
