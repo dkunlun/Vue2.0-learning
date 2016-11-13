@@ -6,7 +6,9 @@ vue2.0 learning
 - [vue-router](https://github.com/vuejs/vue-router)
 - [vue-resource](https://github.com/pagekit/vue-resource)
 - [vue-cli](https://github.com/vuejs/vue-cli)
-
+	
 Running the examples:
-	$ npm install or yarn
-	$ npm run dev # serve examples at localhost:3000
+
+``` bash
+$ npm install or yarn
+$ npm run dev # serve examples at localhost:3000
