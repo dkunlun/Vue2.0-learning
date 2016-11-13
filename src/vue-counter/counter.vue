@@ -1,15 +1,15 @@
 <template>
 	<div id="app">
-		<div>Clicked: {{$store.state.count}} times, count is {{ evenOrOdd }},
+		<div>Clicked: {{count}} times, count is {{ evenOrOdd }},
 		<button @click="increment">+</button>
 		<button @click="decrement">-</button>
 		<button @click="incrementIfOdd">Increment if odd</button>
 		<button @click="incrementAsync">Increment async</button>
 		<button @click="getList">getList</button>
-		<div v-for="item in $store.state.list">{{item.title}}</div>
+		<div v-for="item in list">{{item.title}}</div>
 	</div>
 	<div>
-		<page></page>
+
 	</div>
 	</div>
 </template>
@@ -17,11 +17,12 @@
 <script>
 import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
-import page from './component/pager/page.vue';
-Vue.component(page.name, page);
+
 export default {
 	computed: mapGetters([
-		'evenOrOdd'
+		'evenOrOdd',
+		'count',
+		'list'
 	]),
 	methods: mapActions([
 		'increment',
@@ -31,7 +32,7 @@ export default {
 		'getList'
 	]),
 	component: {
-		page
+		
 	}
 }
 </script>

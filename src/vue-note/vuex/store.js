@@ -38,9 +38,10 @@ const mutations = {
 	}
 }
 
-export default new Vuex.Store({
-	state,
-	actions,
-	mutations,
-	getters
-})
+const moduleNote = {
+	state: state,
+	mutations: mutations,
+	getters: getters,
+	actions: actions
+}
+export { moduleNote as note }

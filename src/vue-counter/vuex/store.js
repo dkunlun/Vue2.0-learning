@@ -53,12 +53,14 @@ const actions = {
 };
 
 const getters = {
-	evenOrOdd: state => state.count % 2 === 0 ? 'even' : 'odd'
+	evenOrOdd: state => state.count % 2 === 0 ? 'even' : 'odd',
+	count: state => state.count,
+	list: state => state.list
 };
-
-export default new Vuex.Store({
-	state,
-	getters,
-	actions,
-	mutations
-});
+const moduleCounter = {
+	state: state,
+	actions: actions,
+	mutations: mutations,
+	getters: getters
+}
+export { moduleCounter as counter }
