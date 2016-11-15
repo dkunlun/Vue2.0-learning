@@ -5,7 +5,6 @@ import First from './First.vue';
 import Second from './Second.vue';
 import VueRouter from 'vue-router';
 import Counter from './vue-counter/counter.vue';
-// import store from './store.js';
 import { note } from './vue-note/vuex/store'
 import { counter } from './vue-counter/vuex/store'
 import App from './vue-note/components/app.vue'
