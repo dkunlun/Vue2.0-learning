@@ -11,12 +11,12 @@ const state = {
 }
 
 const getters = {
-	shopcartList: state => state.shopcart.list
+	shopcartList: state => state.list
 }
 
 const mutations = {
 	[type.GET_LIST] (state, data) {
-		state.shopcartList = _.uniqBy(state.shopcartList.concat(data), 'id');
+		state.list = _.uniqBy(state.list.concat(data), 'id');
 	}
 }
 

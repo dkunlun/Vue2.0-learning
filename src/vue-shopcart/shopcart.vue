@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<ul>
-			<li v-for="item in shopcartList">1</li>
+			<li v-for="item in shopcartList">{{item.name}}</li>
 		</ul>
 	</div>
 </template>
@@ -24,7 +24,7 @@ export default {
 		}
 	},
 	created () {
-		this.getShopCartList
+		this.getShopCartList()
 	}
 }
 </script>
