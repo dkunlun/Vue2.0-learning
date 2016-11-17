@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as actions from './actions.js'
+import * as type from './mutation-types'
 
 Vue.use(Vuex)
 
@@ -14,7 +15,7 @@ const getters = {
 	activeNoteText: state => state.activeNote.text
 }
 const mutations = {
-	addNote(state) {
+	[type.ADD_NOTE] (state) {
 		const newNote = {
 			text: 'New note',
 			favorite: false
@@ -22,18 +23,18 @@ const mutations = {
 		state.notes.push(newNote)
 		state.activeNote = newNote
 	},
-	editNote(state, text) {
+	[type.EDIT_NOTE] (state, text) {
 		state.activeNote.text = text
 	},
-	deleteNote(state) {
+	[type.DELETE_NOTE] (state) {
 		// state.notes.$remove(state.activeNote)
 		state.notes.splice(state.notes.indexOf(state.activeNote), 1)
 		state.activeNote = state.notes[0]
 	},
-	toggleFavorite(state) {
+	[type.TOGGLE_FAVORITE] (state) {
 		state.activeNote.favorite = !state.activeNote.favorite
 	},
-	setActiveNote(state, note) {
+	[type.SET_ACTIVE_NOTE] (state, note) {
 		state.activeNote = note
 	}
 }
