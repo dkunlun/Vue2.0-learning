@@ -1,21 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as actions from './actions.js'
-import _ from 'lodash';
+import * as actions from './actions'
+import _ from 'lodash'
+import * as type from './mutation-types'
 
 Vue.use(Vuex);
 
 const state = {
-	goodsList: []
+	list: []
 }
 
 const getters = {
-	goodsList: state => state.goodsList
+	shopcartList: state => state.shopcart.list
 }
 
 const mutations = {
-	getGoodsList (state, data) {
-		state.goodsList = _.uniqBy(state.goodsList.concat(data), 'id');
+	[type.GET_LIST] (state, data) {
+		state.shopcartList = _.uniqBy(state.shopcartList.concat(data), 'id');
 	}
 }
 

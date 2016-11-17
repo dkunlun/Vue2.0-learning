@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<ul>
-			<li v-for="item in goodsList">1</li>
+			<li v-for="item in shopcartList">1</li>
 		</ul>
 	</div>
 </template>
@@ -13,10 +13,10 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
 	name: 'app',
 	computed: mapGetters([
-		'goodsList'
+		'shopcartList'
 	]),
 	methods: mapActions([
-		'getGoodsList'
+		'getShopCartList'
 	]),
 	data() {
 		return {
@@ -24,7 +24,7 @@ export default {
 		}
 	},
 	created () {
-		this.getGoodsList()
+		this.getShopCartList
 	}
 }
 </script>

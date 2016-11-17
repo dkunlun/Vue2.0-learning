@@ -1,16 +1,17 @@
-import Vue from 'vue';
+import Vue from 'vue'
+import * as type from './mutation-types'
 
-const getGoodsList = ({ commit }) => {
+const getShopCartList = ({ commit }) => {
 	Vue.http.get('./list', {
 		params: {
 			page: 1,
 			limit: 10
 		}
 	}).then((response) => {
-		commit('getGoodsList', response.body.data);
+		commit(type.GET_LIST, response.body.data);
 	});
 }
 
 export {
-	getGoodsList
+	getShopCartList
 }
