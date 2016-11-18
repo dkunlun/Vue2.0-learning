@@ -7,6 +7,7 @@
 				<li><router-link to="/count">点我跳转到count</router-link></li>
 				<li><router-link to="/list">点我跳转到list</router-link></li>
 				<li><router-link to="/note">点我跳转到note</router-link></li>
+				<li><router-link to="/draggable">点我跳转到draggable</router-link></li>
 			</ul>
 		</div>
 		<router-view class="view"></router-view>

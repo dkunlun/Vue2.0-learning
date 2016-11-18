@@ -1,11 +1,26 @@
 <template>
 	<div id="app">
-		<ul>
-			<li v-for="item in shopcartList">{{item.name}}</li>
-		</ul>
+		<div id="left">
+			<ul class="list">
+				<li v-for="item in shopcartList">{{item.name}}</li>
+			</ul>
+		</div>
 	</div>
 </template>
 
+<style type="text/css">
+	li {
+		display: block;
+	}
+	.list li {
+		padding: 20px 20px;
+		border: 1px solid;
+	}
+	#left {
+		width: 10%;
+		height: 100%;
+	}
+</style>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';

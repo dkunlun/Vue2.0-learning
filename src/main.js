@@ -11,6 +11,7 @@ import { shopcart } from './vue-shopcart/vuex/store'
 import App from './vue-note/components/app.vue'
 import VueResource from 'vue-resource';
 import list from './component/list/List.vue';
+import draggable from './vue-draggable/draggable.vue';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -21,7 +22,8 @@ const router = new VueRouter({
 		{ path: '/shopcart', component: Shopcart },
 		{ path: '/count', component: Counter },
 		{ path: '/list', component: list },
-		{ path: '/note', component: App }
+		{ path: '/note', component: App },
+		{ path: '/draggable', component: draggable },
 	]
 });
 
