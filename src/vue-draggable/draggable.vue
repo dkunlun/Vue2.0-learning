@@ -4,13 +4,14 @@
 			<li v-for="item in list">{{item.name}}</li>
 		</ul>
 		<div>
-			<ul>
-				<li v-for="item in list" 
+			<ul style="width: 1000px;">
+				<li v-for="(item, index) in list" 
 					class="draggItem"
-					:class="item.color" 
+					:class="[item.color, {'dragging': item.dragging}]" 
 					:id="item.id" draggable="true" 
-					@drop="drop" @dragover="allowDrop" 
-					@dragstart="drag">
+					@drop="drop($event, index)" @dragover="allowDrop" 
+					@dragstart="drag($event, index)"
+					@dragend="dragE($event, index)">
 				</li>
 			</ul>
 		</div>
@@ -26,32 +27,64 @@
 					{
 						id: 'drag1',
 						color: 'red',
-						name: 'one'
+						name: 'one',
+						dragging: false
 					},
 					{
 						id: 'drag2',
 						color: 'green',
-						name: 'two'
+						name: 'two',
+						dragging: false
 					},
 					{
 						id: 'drag3',
 						color: 'blue',
-						name: 'three'
+						name: 'three',
+						dragging: false
+					},
+					{
+						id: 'drag4',
+						color: 'orange',
+						name: 'four',
+						dragging: false
+					},
+					{
+						id: 'drag5',
+						color: 'yellow',
+						name: 'five',
+						dragging: false
+					},
+					{
+						id: 'drag6',
+						color: 'skyblue',
+						name: 'six',
+						dragging: false
 					}
-				]
+				],
+				from: null,
+				to: null
 			}
 		},
 		methods: {
 			allowDrop(ev) {
 				ev.preventDefault();
 			},
-			drag(ev) {
+			drag(ev, index) {
+				this.list[index].dragging = true;
+				this.from = index;
 				ev.dataTransfer.setData("Text", ev.target.id);
 			},
-			drop(ev) {
+			drop(ev, index) {
+				this.to = index;
+				var temp = this.list[this.from];
+				this.list[this.from] = this.list[this.to];
+				this.list[this.to] = temp;
 				var data = ev.dataTransfer.getData("Text");
-				ev.srcElement.parentNode.insertBefore(document.getElementById(data), ev.srcElement);
+				// ev.srcElement.preventDefaultrentNode.insertBefore(document.getElementById(data), ev.srcElement);
 				ev.preventDefault();
+			},
+			dragE(ev, index) {
+				this.list[index].dragging = false;
 			}
 		}
 	}
@@ -62,7 +95,7 @@
 		width: 300px;
 		height: 200px;
 		display: inline-block;
-		margin: 0px 5px;
+		margin: 10px 10px;
 	}
 	.red {
 		background: red;
@@ -72,6 +105,15 @@
 	}
 	.blue {
 		background: blue;
+	}
+	.orange {
+		background: orange;
+	}
+	.skyblue {
+		background: skyblue;
+	}
+	.yellow {
+		background: yellow;
 	}
 	.dragging {
 		transform: scale(1.1);
