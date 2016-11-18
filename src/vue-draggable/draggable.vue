@@ -1,17 +1,23 @@
 <template>
 	<div id="app">
 		<ul>
-			<li v-for="item in list">{{item.name}}</li>
+			<li v-for="(item, index) in list" 
+				draggable="true" 
+				@drop="handleDrop($event, index)" @dragover="allowDrop" 
+				@dragstart="handleDragStart($event, index)"
+				@dragend="handleDragEnd($event, index)">
+				{{item.name}}
+			</li>
 		</ul>
 		<div>
 			<ul style="width: 1000px;">
 				<li v-for="(item, index) in list" 
 					class="draggItem"
 					:class="[item.color, {'dragging': item.dragging}]" 
-					:id="item.id" draggable="true" 
-					@drop="drop($event, index)" @dragover="allowDrop" 
-					@dragstart="drag($event, index)"
-					@dragend="dragE($event, index)">
+					draggable="true" 
+					@drop="handleDrop($event, index)" @dragover="allowDrop" 
+					@dragstart="handleDragStart($event, index)"
+					@dragend="handleDragEnd($event, index)">
 				</li>
 			</ul>
 		</div>
@@ -69,22 +75,22 @@
 			allowDrop(ev) {
 				ev.preventDefault();
 			},
-			drag(ev, index) {
+			handleDragStart(ev, index) {
 				this.list[index].dragging = true;
 				this.from = index;
-				ev.dataTransfer.setData("Text", ev.target.id);
+				ev.dataTransfer.setData("Text", JSON.stringify(this.list[index]));
 			},
-			drop(ev, index) {
+			handleDrop(ev, index) {
 				this.to = index;
 				var temp = this.list[this.from];
-				this.list[this.from] = this.list[this.to];
-				this.list[this.to] = temp;
+				this.list.splice(this.from, 1, this.list[this.to])
+				this.list.splice(this.to, 1, temp);
+				this.list[this.to].dragging = false;
 				var data = ev.dataTransfer.getData("Text");
-				// ev.srcElement.preventDefaultrentNode.insertBefore(document.getElementById(data), ev.srcElement);
 				ev.preventDefault();
 			},
-			dragE(ev, index) {
-				this.list[index].dragging = false;
+			handleDragEnd(ev, index) {
+				ev.preventDefault();
 			}
 		}
 	}
