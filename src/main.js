@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex'
-import Foo from './Foo.vue';
+import Main from './main.vue';
 import Shopcart from './vue-shopcart/shopcart.vue';
 import Second from './Second.vue';
 import VueRouter from 'vue-router';
@@ -39,5 +39,5 @@ new Vue({
 	el: '#app',
 	store,
 	router: router,
-	render: h => h(Foo)
+	render: h => h(Main)
 });
