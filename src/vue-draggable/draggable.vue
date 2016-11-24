@@ -7,7 +7,8 @@
 					draggable="true" 
 					@drop="handleDrop($event, index)" @dragover="allowDrop" 
 					@dragstart="handleDragStart($event, index)"
-					@dragend="handleDragEnd($event, index)">
+					@dragend="handleDragEnd($event, index)"
+					@dragenter="handleDragEnter($event, index)">
 					{{item.color}}
 				</li>
 			</ul>
@@ -87,8 +88,6 @@
 				ev.dataTransfer.setData("Text", JSON.stringify(this.list[index]));
 			},
 			handleDrop(ev, index) {
-				this.to = index;
-				this.swapArray();
 				this.list[this.to].dragging = false;
 				var data = ev.dataTransfer.getData("Text");
 				ev.preventDefault();
@@ -97,10 +96,12 @@
 				ev.preventDefault();
 			},
 			handleDragEnter(ev, index) {
-				console.log(index)
+				this.to = index;
+				this.swapArray();
+				this.from = this.to;
 				ev.preventDefault();
 			},
-			swapArray: function () {
+			swapArray() {
 				var temp = this.list[this.from];
 				this.list.splice(this.from, 1, this.list[this.to])
 				this.list.splice(this.to, 1, temp);
