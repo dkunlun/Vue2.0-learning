@@ -1,14 +1,20 @@
 <template>
 	<div id="app">
-		<div id="left">
-			<ul class="list">
-				<li v-for="item in shopcartList">{{item.name}}</li>
-			</ul>
+		<div id="header">
+			<div>
+				<input v-model="query" type="text">
+				<button @click="searchBook(query)">搜索</button>
+			</div>
+			<div>
+				<ul id="list">
+					<li v-for="item in bookList">1</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </template>
 
-<style type="text/css">
+<style>
 	
 </style>
 
@@ -16,20 +22,24 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-	name: 'app',
-	computed: mapGetters([
-		'shopcartList'
-	]),
-	methods: mapActions([
-		'getShopCartList'
-	]),
-	data() {
-		return {
-			msg: 'First page!'
+	name: 'book',
+	computed: {
+		...mapGetters([
+			'bookList'
+		])
+	},
+	methods: {
+		...mapActions([
+			'searchBook'
+		]),
+		show(data) {
+			console.log(data)
 		}
 	},
-	created () {
-		this.getShopCartList()
+	data() {
+		return {
+			query: ''
+		}
 	}
 }
 </script>

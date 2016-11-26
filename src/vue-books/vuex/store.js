@@ -11,20 +11,23 @@ const state = {
 }
 
 const getters = {
-	shopcartList: state => state.list
+	bookList: state => state.list
 }
 
 const mutations = {
 	[type.GET_LIST] (state, data) {
 		state.list = _.uniqBy(state.list.concat(data), 'id');
+	},
+	[type.SEARCH_BOOK] (state, data) {
+		state.list =_.uniqBy(state.list.concat(data), 'id');
 	}
 }
 
-const moduleShopcart = {
+const moduleBook = {
 	state: state,
 	mutations: mutations,
 	getters: getters,
 	actions: actions
 }
 
-export { moduleShopcart as shopcart }
+export { moduleBook as book }
