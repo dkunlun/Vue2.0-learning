@@ -9,17 +9,7 @@
 </template>
 
 <style type="text/css">
-	li {
-		display: block;
-	}
-	.list li {
-		padding: 20px 20px;
-		border: 1px solid;
-	}
-	#left {
-		width: 10%;
-		height: 100%;
-	}
+	
 </style>
 
 <script>
