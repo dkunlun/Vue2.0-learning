@@ -1,16 +1,18 @@
 <template>
-	<div id="app">
+	<div>
 		<div id="header">
 			<div>
-				<input v-model="query" type="text">
-				<button @click="searchBook(query)">搜索</button>
+				<el-input placeholder="请输入内容" v-model="query" style="width: 300px;">
+					<el-button slot="append" icon="search" @click="searchBook(query)"></el-button>
+				</el-input>
 			</div>
 			<div>
 				<ul id="list">
-					<li v-for="item in bookList">1</li>
+					<li v-for="item in bookList">{{item.title}}<img :src="item.images.medium"></li>
 				</ul>
 			</div>
 		</div>
+		<NavMenu/>
 	</div>
 </template>
 
@@ -19,7 +21,12 @@
 </style>
 
 <script>
+import 'element-ui/lib/theme-default/index.css'
+import { Input, Button } from 'element-ui'
+import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
+Vue.component(Input.name, Input)
+Vue.component(Button.name, Button)
 
 export default {
 	name: 'book',
@@ -40,6 +47,10 @@ export default {
 		return {
 			query: ''
 		}
+	},
+	component: {
+		Input,
+		Button
 	}
 }
 </script>

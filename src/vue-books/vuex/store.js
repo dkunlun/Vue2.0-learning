@@ -19,7 +19,7 @@ const mutations = {
 		state.list = _.uniqBy(state.list.concat(data), 'id');
 	},
 	[type.SEARCH_BOOK] (state, data) {
-		state.list =_.uniqBy(state.list.concat(data), 'id');
+		state.list =data;
 	}
 }
 

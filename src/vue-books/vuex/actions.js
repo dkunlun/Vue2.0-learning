@@ -18,7 +18,7 @@ const searchBook = ({ commit }, query) => {
 			q: query
 		}
 	}).then((response) => {
-		commit(type.SEARCH_BOOK, response.body.data);
+		commit(type.SEARCH_BOOK, response.body.books);
 	});
 }
 

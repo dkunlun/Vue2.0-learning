@@ -11,12 +11,14 @@ import { shopcart } from './vue-shopcart/vuex/store'
 import { book } from './vue-books/vuex/store'
 import App from './vue-note/components/app.vue'
 import VueResource from 'vue-resource';
-import list from './component/list/List.vue';
+import list from './components/list/List.vue';
 import draggable from './vue-draggable/draggable.vue';
 import Book from './vue-books/book.vue';
+import Menu from './components/menu/menu.vue';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
+Vue.component(Menu.name, Menu);
 
 const router = new VueRouter({
 	routes: [
@@ -43,5 +45,5 @@ new Vue({
 	el: '#app',
 	store,
 	router: router,
-	render: h => h(Main)
+	render: h => h(Menu)
 });
