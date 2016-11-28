@@ -22,7 +22,16 @@ const searchBook = ({ commit }, query) => {
 	});
 }
 
+const detailBookGet = ({ commit }, id) => {
+	Vue.http.jsonp('https://api.douban.com/v2/book/' + id, {
+
+	}).then((response) => {
+		commit(type.DETAIL_BOOK, response.body);
+	});
+}
+
 export {
 	getBookList,
-	searchBook
+	searchBook,
+	detailBookGet
 }

@@ -7,11 +7,13 @@ import * as type from './mutation-types'
 Vue.use(Vuex);
 
 const state = {
-	list: []
+	list: [],
+	detailBook: {}
 }
 
 const getters = {
-	bookList: state => state.list
+	bookList: state => state.list,
+	detailBook: state => state.detailBook
 }
 
 const mutations = {
@@ -19,7 +21,10 @@ const mutations = {
 		state.list = _.uniqBy(state.list.concat(data), 'id');
 	},
 	[type.SEARCH_BOOK] (state, data) {
-		state.list =data;
+		state.list = data;
+	},
+	[type.DETAIL_BOOK] (state, data) {
+		state.detailBook = data;
 	}
 }
 

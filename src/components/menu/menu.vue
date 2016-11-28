@@ -1,45 +1,54 @@
 <template>
-	<div id="app">
-		<div>
-			<el-menu theme="dark" :router="router" default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-				<el-menu-item index="/shopcart">点我跳转到shopcart</el-menu-item>
-				<!-- <el-submenu index="2">
-					<template slot="title">我的工作台</template>
-					<el-menu-item index="2-1">选项1</el-menu-item>
-					<el-menu-item index="2-2">选项2</el-menu-item>
-					<el-menu-item index="2-3">选项3</el-menu-item>
-				</el-submenu> -->
-				<el-menu-item index="/second">点我跳转到第二页</el-menu-item>
-				<el-menu-item index="/count">点我跳转到count</el-menu-item>
-				<el-menu-item index="/list">点我跳转到list</el-menu-item>
-				<el-menu-item index="/note">点我跳转到note</el-menu-item>
-				<el-menu-item index="/draggable">点我跳转到draggable</el-menu-item>
-				<el-menu-item index="/book">点我跳转到book</el-menu-item>
-			</el-menu>
+	<div>
+		<mu-paper class="menu">
+			<mu-menu>
+				<mu-menu-item @click="show({name: 'shopcart'})" title="Shopcart"/>
+				<mu-menu-item @click="show({name: 'second'})" title="Second"/>
+				<mu-menu-item @click="show({name: 'count'})" title="Counter"/>
+				<mu-menu-item @click="show({name: 'list'})" title="list"/>
+				<mu-menu-item @click="show({name: 'note'})" title="note"/>
+				<mu-menu-item @click="show({name: 'draggable'})" title="draggable"/>
+				<mu-menu-item @click="show({name: 'book'})" title="Book"/>
+			</mu-menu>
+		</mu-paper>
+		<div id="content">
+			<router-view class="view"></router-view>
 		</div>
-		<router-view class="view"></router-view>
 	</div>
 </template>
 
+<style>
+.menu,#content {
+	display: inline-block;
+}
+.menu {
+	width: 10%;
+}
+#content {
+	width: 88%;
+    vertical-align: top;
+}
+</style>
+
 <script>
 import Vue from 'vue';
-import { Menu, Submenu, MenuItem, MenuItemGroup } from 'element-ui'
-Vue.component(Menu.name, Menu)
-Vue.component(Submenu.name, Submenu)
-Vue.component(MenuItem.name, MenuItem)
-Vue.component(MenuItemGroup.name, MenuItemGroup)
+import { menu,menuItem,paper } from 'muse-ui';
+
+Vue.component(menu.name, menu)
+Vue.component(menuItem.name, menuItem)
+Vue.component(paper.name, paper)
+
 export default {
 	name: 'myMenu',
 	methods: {
-		handleSelect(key, keyPath) {
-			console.log(key, keyPath);
+		show(params) {
+			this.$router.push(params)
 		}
 	},
 	component: {
-		Menu,
-		Submenu,
-		MenuItem,
-		MenuItemGroup
+		menu,
+		menuItem,
+		paper
 	},
 	data() {
 		return {

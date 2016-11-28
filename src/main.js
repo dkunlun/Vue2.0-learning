@@ -14,7 +14,9 @@ import VueResource from 'vue-resource';
 import list from './components/list/List.vue';
 import draggable from './vue-draggable/draggable.vue';
 import Book from './vue-books/book.vue';
+import detailBook from './vue-books/component/detailBook.vue';
 import Menu from './components/menu/menu.vue';
+import 'muse-ui/dist/muse-ui.css'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -22,15 +24,27 @@ Vue.component(Menu.name, Menu);
 
 const router = new VueRouter({
 	routes: [
-		{ path: '/second', component: Second },
-		{ path: '/shopcart', component: Shopcart },
-		{ path: '/count', component: Counter },
-		{ path: '/list', component: list },
-		{ path: '/note', component: App },
-		{ path: '/draggable', component: draggable },
-		{ path: '/book', component: Book },
+		{ path: '/second', name: 'second', component: Second },
+		{ path: '/shopcart', name: 'shopcart', component: Shopcart },
+		{ path: '/count', name: 'count', component: Counter },
+		{ path: '/list', name: 'list', component: list },
+		{ path: '/note', name: 'note', component: App },
+		{ path: '/draggable', name: 'draggable', component: draggable },
+		{ path: '/book', name: 'book', component: Book },
+		{ path: '/book/detail/:id', name: 'detailBook', component: detailBook },
 	]
 });
+
+Vue.http.interceptors.push((request, next) => {
+	
+	next((response) => {
+		loadingInstance.close();
+		// 请求发送后的处理逻辑
+		// ...
+		// 根据请求的状态，response参数会返回给successCallback或errorCallback
+		return response
+	})
+})
 
 const store = new Vuex.Store({
 	modules: {
