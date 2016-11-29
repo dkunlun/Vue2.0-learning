@@ -38,7 +38,6 @@ const router = new VueRouter({
 Vue.http.interceptors.push((request, next) => {
 	
 	next((response) => {
-		loadingInstance.close();
 		// 请求发送后的处理逻辑
 		// ...
 		// 根据请求的状态，response参数会返回给successCallback或errorCallback

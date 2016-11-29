@@ -2,10 +2,8 @@
 	<div>
 		<div id="header">
 			<div>
-				<mu-text-field label="密码" hintText="请输入密码" type="password" labelFloat/>
-				<!-- <el-input placeholder="请输入内容" v-model="query" style="width: 300px;">
-					<el-button slot="append" icon="search" @click="searchBook(query)"></el-button>
-				</el-input> -->
+				<mu-text-field label="搜索" v-model="query" hintText="请输入书籍信息" type="text" labelFloat/>
+				<mu-icon-button icon="search" @click="searchBook(encodeURI(query))"/>
 			</div>
 			<div>
 				<ul id="list">
@@ -33,8 +31,9 @@
 <script>
 import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
-import { textField } from 'muse-ui';
+import { textField,iconButton } from 'muse-ui';
 Vue.component(textField.name, textField)
+Vue.component(iconButton.name, iconButton)
 
 export default {
 	name: 'book',
@@ -47,7 +46,10 @@ export default {
 		...mapActions([
 			'searchBook',
 			'detailBook'
-		])
+		]),
+		show() {
+			console.log(this.query)
+		}
 	},
 	data() {
 		return {
@@ -55,7 +57,8 @@ export default {
 		}
 	},
 	component: {
-		textField
+		textField,
+		iconButton
 	}
 }
 </script>

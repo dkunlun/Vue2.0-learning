@@ -21,9 +21,6 @@
 .menu,#content {
 	display: inline-block;
 }
-.menu {
-	width: 10%;
-}
 #content {
 	width: 88%;
     vertical-align: top;
