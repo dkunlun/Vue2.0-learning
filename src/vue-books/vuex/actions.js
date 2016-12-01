@@ -12,10 +12,19 @@ const getBookList = ({ commit }) => {
 	});
 }
 
+// const searchBook = ({ commit }, query) => {
+// 	Vue.http.jsonp('https://api.douban.com/v2/book/search', {
+// 		params: {
+// 			q: query
+// 		}
+// 	}).then((response) => {
+// 		commit(type.SEARCH_BOOK, response.body.books);
+// 	});
+// }
 const searchBook = ({ commit }, query) => {
-	Vue.http.jsonp('https://api.douban.com/v2/book/search', {
+	Vue.http.jsonp('http://mylance.top/api/getSearchList', {
 		params: {
-			q: query
+			key: query
 		}
 	}).then((response) => {
 		commit(type.SEARCH_BOOK, response.body.books);
