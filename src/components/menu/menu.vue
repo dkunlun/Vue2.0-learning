@@ -2,13 +2,13 @@
 	<div>
 		<mu-paper class="menu">
 			<mu-menu>
-				<mu-menu-item @click="show({name: 'shopcart'})" title="Shopcart"/>
-				<mu-menu-item @click="show({name: 'second'})" title="Second"/>
-				<mu-menu-item @click="show({name: 'count'})" title="Counter"/>
-				<mu-menu-item @click="show({name: 'list'})" title="list"/>
-				<mu-menu-item @click="show({name: 'note'})" title="note"/>
-				<mu-menu-item @click="show({name: 'draggable'})" title="draggable"/>
-				<mu-menu-item @click="show({name: 'book'})" title="Book"/>
+				<mu-menu-item @click="come({name: 'shopcart'})" title="Shopcart"/>
+				<mu-menu-item @click="come({name: 'second'})" title="Second"/>
+				<mu-menu-item @click="come({name: 'count'})" title="Counter"/>
+				<mu-menu-item @click="come({name: 'list'})" title="list"/>
+				<mu-menu-item @click="come({name: 'note'})" title="note"/>
+				<mu-menu-item @click="come({name: 'draggable'})" title="draggable"/>
+				<mu-menu-item @click="come({name: 'book'})" title="Book"/>
 			</mu-menu>
 		</mu-paper>
 		<div id="content">
@@ -38,8 +38,11 @@ Vue.component(paper.name, paper)
 export default {
 	name: 'myMenu',
 	methods: {
-		show(params) {
+		come(params) {
 			this.$router.push(params)
+		},
+		show(params) {
+			console.log(1)
 		}
 	},
 	component: {
