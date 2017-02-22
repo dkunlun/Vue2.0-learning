@@ -2,7 +2,7 @@
 	<div>
 		<div id="header">
 			<div>
-				<mu-text-field label="搜索" @keyup="show" v-model="query" hintText="请输入书籍信息" type="text" labelFloat/>
+				<mu-text-field label="搜索" @keyup.native.enter="searchBook(query)" v-model="query" hintText="请输入书籍信息" type="text" labelFloat/>
 				<mu-icon-button icon="search" @click="searchBook(query)"/>
 			</div>
 			<div>
@@ -61,9 +61,6 @@ export default {
 		]),
 		handleChange(value) {
 			this.bottomNav = value;
-		},
-		show() {
-			console.log(1)
 		}
 	},
 	data() {
