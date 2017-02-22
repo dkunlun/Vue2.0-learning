@@ -47,6 +47,12 @@ module.exports = {
 	devServer: {
 		historyApiFallback: true,
 		noInfo: true
+		// proxy: {
+		// 	'/src/vue-shopcart/list.json': {
+		// 		target: 'http://localhost:3000/src/vue-shopcart/list.json?page=1&limit=10',
+		// 		secure: false
+		// 	}
+		// }
 	},
 	devtool: '#eval-source-map'
 }
